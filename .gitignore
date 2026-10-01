@@ -1,0 +1,4 @@
+# 模型权重走 Releases，不进 git（GitHub 单文件上限 100MB）
+*.gguf
+*.safetensors
+models/

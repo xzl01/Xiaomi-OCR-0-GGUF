@@ -1,0 +1,52 @@
+Xiaomi-OCR-0 GGUF
+Copyright 2026 xzl01
+
+This product includes software and model weights developed by
+SeerRay-Lab (https://github.com/SeerRay-Lab/Xiaomi-OCR-0),
+licensed under the Apache License, Version 2.0.
+
+--------------------------------------------------------------------------------
+STATEMENT OF CHANGES (Apache License 2.0, Section 4(b))
+--------------------------------------------------------------------------------
+
+The following changes were made to the original work:
+
+1. FORMAT CONVERSION
+   The original model weights (model.safetensors, bfloat16) were converted to
+   the GGUF format using llama.cpp's convert_hf_to_gguf.py at build b10568
+   (commit af9df75).
+
+   - model-f16.gguf    : full-precision (f16) GGUF of the language model
+   - mmproj-f16.gguf   : f16 GGUF of the vision projector (mmproj)
+
+2. QUANTIZATION
+   Two quantized variants of the language model were produced with
+   llama-quantize:
+
+   - model-q8_0.gguf   : Q8_0  (8.52 BPW, 795 MB)
+   - model-q4_k_m.gguf : Q4_K_M (5.50 BPW, 517 MB)
+
+   The vision projector (mmproj) was intentionally left unquantized (f16),
+   following llama.cpp convention.
+
+3. NO WEIGHT MODIFICATION BEYOND QUANTIZATION
+   No fine-tuning, pruning, merging, or any other modification of the model
+   parameters was performed. The quantization is lossy compression of the
+   original weights.
+
+4. ADDED FILES
+   Benchmark scripts, evaluation results, and documentation are new works by
+   the author of this repository (xzl01) and are provided under the same
+   Apache License 2.0.
+
+--------------------------------------------------------------------------------
+SOURCE
+--------------------------------------------------------------------------------
+
+Original model : https://huggingface.co/SeerRay-Lab/Xiaomi-OCR-0
+                 revision e4d1c4a6804bd9ef342b93d705a73af003e2ef4e
+Original code  : https://github.com/SeerRay-Lab/Xiaomi-OCR-0
+                 commit 6499f6c8c65081e41830cd7d5740ed82dfabf0bf
+License        : Apache License 2.0
+
+The full text of the Apache License 2.0 is included in the LICENSE file.

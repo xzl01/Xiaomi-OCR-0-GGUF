@@ -1,0 +1,4 @@
+doc_invoice	7.6s	prompt=1150	gen=256
+doc_dense	16.5s	prompt=2284	gen=296
+doc_hand	8.9s	prompt=1690	gen=137
+kie_invoice	4.6s	prompt=1157	gen=97
