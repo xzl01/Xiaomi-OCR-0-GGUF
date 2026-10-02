@@ -38,6 +38,16 @@ llama.cpp 是现实可行的路：它支持这个架构（包括模型的混合�
 ```bash
 # 1. 从本仓库 Releases 页下载
 #    model-q4_k_m.gguf + mmproj-f16.gguf
+#
+#    注意：两个语言模型是以 40MB 分块发布的。原因是上传链路带宽在
+#    1.7MB/s ~ 80KB/s 之间剧烈波动，GitHub 会把大文件传输以 HTTP 408
+#    （数据停滞超时）掐断。用脚本取：
+./scripts/fetch-model.sh q4          # → model-q4_k_m.gguf   (517 MB)
+./scripts/fetch-model.sh mmproj      # → mmproj-f16.gguf     (198 MB，必需)
+./scripts/fetch-model.sh all         # 全部（含 Q8_0）
+#
+#    （也可手工重组：cat q4k_m.part-* > model-q4_k_m.gguf）
+#    脚本会自动校验下面的 SHA256。
 
 # 2. 启动服务
 llama-server \

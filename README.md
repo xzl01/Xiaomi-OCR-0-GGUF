@@ -43,6 +43,16 @@ Vulkan.
 ```bash
 # 1. Get the files
 #    model-q4_k_m.gguf + mmproj-f16.gguf from the Releases page of this repo
+#
+#    NOTE: the two language models are published as 40 MB parts, because the
+#    upload link available here fluctuated between 1.7 MB/s and 80 KB/s and
+#    GitHub kept aborting large single uploads with HTTP 408. Use the helper:
+./scripts/fetch-model.sh q4          # -> model-q4_k_m.gguf   (517 MB)
+./scripts/fetch-model.sh mmproj      # -> mmproj-f16.gguf     (198 MB, required)
+./scripts/fetch-model.sh all         # everything, incl. Q8_0
+#
+#    (Or assemble by hand: cat q4k_m.part-* > model-q4_k_m.gguf)
+#    The helper verifies SHA256 against the values published below.
 
 # 2. Serve
 llama-server \
